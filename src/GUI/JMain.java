@@ -1,6 +1,5 @@
 package GUI;
 import java.sql.*;
-import javax.swing.JOptionPane;
 
 
 /*
@@ -14,11 +13,9 @@ import javax.swing.JOptionPane;
  * @author Just Windows
  */
 public class JMain extends javax.swing.JFrame {
-
+        Statement stmt = null;
     
-    Connection con = null;
-    Statement stmt = null;
-    ResultSet rs = null;
+    
     /**
      * Creates new form JMain
      */
@@ -167,6 +164,7 @@ public class JMain extends javax.swing.JFrame {
 
         jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 204), 1, true));
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Add Entry");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +199,7 @@ public class JMain extends javax.swing.JFrame {
                                 .addComponent(jTextField4)
                                 .addComponent(jTextField5)
                                 .addComponent(jTextField6))))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 1418, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -241,9 +239,9 @@ public class JMain extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,59 +263,30 @@ public class JMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/student", "root",
+         Connection con = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/stud", "root",
             "root");
-        stmt = con.createStatement();
-        String name = jTextField1.getText();
+         stmt = con.createStatement();
+        String Name = jTextField1.getText();
         String ID = jTextField2.getText();
-        String batch = jTextField3.getText();
-        String acad = jTextField4.getText();
-        String extact = jTextField5.getText();
-        String outin = jTextField6.getText();
+        String Batch = jTextField3.getText();
+        String Acadperf = jTextField4.getText();
+        String ExtActiv = jTextField5.getText();
+        String OutInSport = jTextField6.getText();
+        
         String INSERT = "INSERT INTO RECORD VALUES('"
-                        + name+ "','" + ID + "','"
-                        + batch + "','" + acad + "','" + extact + "','" + outin
+                        + Name + "','" + ID + "','"
+                        + Batch + "','" + Acadperf + "','" + ExtActiv + "','" + OutInSport
                         + "');";
         stmt.executeUpdate(INSERT);
-        JOptionPane.showMessageDialog(
-            this, "Record Added Successfully");
-        jButton1.setEnabled(true);
-    }
-    catch (Exception e) {
-        JOptionPane.showMessageDialog(
-            this, "Error In Connectivity");
+        jButton2.setEnabled(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+        public static void main(String args[]) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

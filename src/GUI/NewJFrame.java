@@ -142,8 +142,15 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String name = jTextField2.getText();
         String pass = jTextField3.getText();
-        this.setVisible(false);
-        new JMain().setVisible(true);
+        System.out.print(name+pass);
+        String n= "admin";
+        String p = "pass";
+        if (name.equals(n) && pass.equals(p))
+        {
+            System.out.println("True");
+            this.setVisible(false);
+            new JMain().setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed

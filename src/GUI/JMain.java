@@ -13,7 +13,7 @@ import java.sql.*;
  * @author Just Windows
  */
 public class JMain extends javax.swing.JFrame {
-        Statement stmt = null;
+        Statement stm = null;
     
     
     /**
@@ -21,6 +21,7 @@ public class JMain extends javax.swing.JFrame {
      */
     public JMain() {
         initComponents();
+        
     }
 
     /**
@@ -57,6 +58,7 @@ public class JMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel2.setBackground(new java.awt.Color(153, 51, 255));
 
@@ -203,7 +205,7 @@ public class JMain extends javax.swing.JFrame {
                                 .addComponent(jTextField4)
                                 .addComponent(jTextField5)
                                 .addComponent(jTextField6)))))
-                .addGap(0, 1418, Short.MAX_VALUE))
+                .addGap(0, 360, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +244,7 @@ public class JMain extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(116, 116, 116))))
         );
@@ -266,7 +268,25 @@ public class JMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String Name = jTextField1.getText();
+        String ID = jTextField2.getText();
+        String Batch = jTextField3.getText();
+        String Acadperf = jTextField4.getText();
+        String ExtActiv = jTextField5.getText();
+        String OutInSport = jTextField6.getText();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost::3306/stud","root","root"); 
+            Statement stm = c.createStatement();
+            
+            String sql = "INSERT INTO CLASS VALUES ('"+Name+"',"+ID+",'"+Batch+"','"+Acadperf+"','"+ExtActiv+"','"+OutInSport+"'";
+            stm.executeUpdate(sql);
+            c.close();
+        }catch (Exception e) {
+            
+        }
+        System.out.println(Name+"\n"+ID+"\n"+Batch+"\n"+Acadperf+"\n"+ExtActiv+"\n"+OutInSport);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
